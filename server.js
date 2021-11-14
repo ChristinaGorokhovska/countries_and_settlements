@@ -1,14 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("Test Hello!");
-});
+const routes = require("./settings/routes");
+routes(app);
 
 app.listen(port, () => {
-    console.log(`The app is listening on port ${port}`);
+    console.log(`The app is on port ${port}`);
 });
