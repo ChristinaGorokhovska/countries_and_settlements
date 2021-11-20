@@ -36,54 +36,53 @@ export const AuthPage = () => {
     };
 
     return (
-        <div className="row">
-            <div className="col s6 offset-s3">
-                <div className="card grey lighten-5">
-                    <div className="card-content black-text">
-                        <span className="card-title center">Getting start</span>
-                        <div>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Enter email"
-                                    id="user_email"
-                                    type="text"
-                                    name="user_email"
-                                    onChange={changeHandler}
-                                ></input>
-                                <label htmlFor="user_email">Email</label>
-                            </div>
+        <div className="d-flex justify-content-center">
+            <div className="col-5 shadow " style={{ padding: 20, borderRadius: 10, marginTop: 100 }}>
+                <form>
+                    <div className="mb-3">
+                        <h2 className="text-center">Getting start</h2>
+                        <label htmlFor="exampleInputEmail1" className="form-label">
+                            Email address
+                        </label>
 
-                            <div className="input-field">
-                                <input
-                                    placeholder="Enter password"
-                                    id="user_password"
-                                    type="password"
-                                    name="user_password"
-                                    onChange={changeHandler}
-                                ></input>
-                                <label htmlFor="user_password">Password</label>
-                            </div>
-                        </div>
+                        <input
+                            placeholder="Enter email"
+                            type="email"
+                            className="form-control"
+                            aria-describedby="emailHelp"
+                            id="user_email"
+                            name="user_email"
+                            onChange={changeHandler}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputPassword1" className="form-label">
+                            Password
+                        </label>
+                        <input
+                            placeholder="Enter password"
+                            className="form-control"
+                            id="user_password"
+                            type="password"
+                            name="user_password"
+                            onChange={changeHandler}
+                        />
                     </div>
 
-                    <div className="card-action">
+                    <div style={{ marginTop: 28 }}>
                         <button
-                            className="btn red lighten-1"
+                            className="btn btn-outline-primary"
                             onClick={loginHandler}
                             style={{ marginRight: 15 }}
                             disabled={loading}
                         >
                             Sign in
                         </button>
-                        <button
-                            className="btn waves-effect waves-light cyan"
-                            onClick={registerHandler}
-                            disabled={loading}
-                        >
+                        <button className="btn btn-outline-danger" onClick={registerHandler} disabled={loading}>
                             Sign up
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );
