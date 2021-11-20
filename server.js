@@ -11,3 +11,5 @@ routes(app);
 app.listen(port, () => {
     console.log(`The app is on port ${port}`);
 });
+
+module.exports.app = app;

@@ -43,12 +43,18 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ message: "Incorrect email or password" });
+    }
+
     const sql =
         "SELECT `id`, `user_email`, `user_password` FROM `users` WHERE `user_email` = '" + req.body.user_email + "'";
 
     db.query(sql, (error, rows, fields) => {
         if (error) {
-            res.status(400).json({ errors: error, message: "Error" });
+            res.status(400).json({ errors: error });
         } else if (rows.length <= 0) {
             res.status(401).json({
                 message: `User with email ${req.body.user_email} not found. Please, register for the first!`,

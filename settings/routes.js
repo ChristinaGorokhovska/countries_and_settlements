@@ -10,8 +10,8 @@ module.exports = (app) => {
     );
     app.post(
         "/api/auth/signin",
-        body("user_email").normalizeEmail().isEmail(),
-        body("user_password").exists(),
+        body("user_email").isEmail(),
+        body("user_password").exists().isLength({ min: 8 }),
         userController.signin
     );
 };
