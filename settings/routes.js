@@ -1,5 +1,6 @@
 module.exports = (app) => {
     const userController = require("../controllers/userController");
+    const mainPageController = require("../controllers/mainPageController");
     const { body } = require("express-validator");
 
     app.post(
@@ -14,4 +15,6 @@ module.exports = (app) => {
         body("user_password").exists().isLength({ min: 8 }),
         userController.signin
     );
+
+    app.get("/api/main", mainPageController.getDefaultSettlements);
 };

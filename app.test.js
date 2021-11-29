@@ -121,4 +121,16 @@ describe("users", () => {
                 });
         });
     });
+
+    describe("GET/ getDefaultList", () => {
+        it("/api/main - 200 get all", (done) => {
+            request(app)
+                .get("/api/main")
+                .expect(200)
+                .end((err, res) => {
+                    if (err) return done(err);
+                    return done();
+                });
+        });
+    });
 });
