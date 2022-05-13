@@ -4,6 +4,12 @@ client/node_modules/
 #config
 config/
 
+#patterns
+patterns/
+
+#images
+images/
+
 # Logs
 logs
 *.log

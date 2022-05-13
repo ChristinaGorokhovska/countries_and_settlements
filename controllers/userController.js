@@ -50,7 +50,9 @@ exports.signin = (req, res) => {
     }
 
     const sql =
-        "SELECT `id`, `user_email`, `user_password` FROM `users` WHERE `user_email` = '" + req.body.user_email + "'";
+        "SELECT `id`, `user_email`, `user_password`, `is_admin` FROM `users` WHERE `user_email` = '" +
+        req.body.user_email +
+        "'";
 
     db.query(sql, (error, rows, fields) => {
         if (error) {
@@ -69,12 +71,13 @@ exports.signin = (req, res) => {
                         {
                             userId: rw.id,
                             email: rw.user_email,
+                            isAdmin: rw.is_admin,
                         },
                         config.jwt,
                         { expiresIn: "1h" }
                     );
 
-                    res.status(200).json({ token: `Bearer ${token}`, userId: rw.id });
+                    res.status(200).json({ token: `Bearer ${token}`, userId: rw.id, isAdmin: rw.is_admin });
                 } else {
                     res.status(401).json({ message: "Incorrect password or email" });
                 }

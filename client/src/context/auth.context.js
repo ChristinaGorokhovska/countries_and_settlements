@@ -8,4 +8,5 @@ export const AuthContext = createContext({
     login: foo,
     logout: foo,
     isAuthenticated: false,
+    isAdmin: false,
 });
